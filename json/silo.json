@@ -1,0 +1,45 @@
+{
+  "name": "Silo",
+  "slug": "silo",
+  "categories": [13],
+  "date_created": "2026-11-21",
+  "type": "ct",
+  "updateable": true,
+  "privileged": false,
+  "interface_port": 8080,
+  "documentation": "https://siloserver.org/",
+  "website": "https://siloserver.org/",
+  "repository": "https://github.com/Silo-Server/silo-server",
+  "architectures": ["amd64", "arm64"],
+  "platforms": ["pve"],
+  "logo": "https://raw.githubusercontent.com/Silo-Server/silo-server/main/assets/icon.png",
+  "description": "Silo is an open-source media server for movies and TV built on PostgreSQL and Redis. It streams to native Apple, Android, Roku and web clients, and speaks the Jellyfin protocol so existing Jellyfin apps can connect.",
+  "install_methods": [
+    {
+      "type": "default",
+      "script": "ct/silo.sh",
+      "config_path": "/etc/silo/silo.env",
+      "resources": {
+        "cpu": 4,
+        "ram": 4096,
+        "hdd": 24,
+        "os": "Debian",
+        "version": "13"
+      }
+    }
+  ],
+  "default_credentials": {
+    "username": null,
+    "password": null
+  },
+  "notes": [
+    {
+      "text": "Mount your media into the container (read-only is fine), then open the web UI and finish the setup wizard.",
+      "type": "info"
+    },
+    {
+      "text": "Jellyfin-compatible clients connect on port 8096.",
+      "type": "info"
+    }
+  ]
+}
