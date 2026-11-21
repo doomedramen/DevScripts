@@ -41,7 +41,7 @@ setup_hwaccel
 PG_VERSION="18" PG_MODULES="pgvector" setup_postgresql
 PG_DB_NAME="silo" PG_DB_USER="silo" PG_DB_EXTENSIONS="vector,pg_trgm,citext,pg_stat_statements" setup_postgresql_db
 
-GH_INCLUDE_PRERELEASE=1 fetch_and_deploy_gh_release "silo" "Silo-Server/silo-server" "tarball"
+fetch_and_deploy_gh_branch "silo" "Silo-Server/silo-server" "main"
 
 GO_VERSION="$(sed -n 's/^go //p' /opt/silo/go.mod)" setup_go
 NODE_VERSION="24" NODE_MODULE="pnpm@$(jq -r '.packageManager | split("@")[1]' /opt/silo/web/package.json)" setup_nodejs

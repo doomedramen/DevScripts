@@ -34,8 +34,8 @@ function update_script() {
     exit
   fi
 
-  if GH_INCLUDE_PRERELEASE=1 check_for_gh_release "silo" "Silo-Server/silo-server"; then
-    GH_INCLUDE_PRERELEASE=1 CLEAN_INSTALL=1 fetch_and_deploy_gh_release "silo" "Silo-Server/silo-server" "tarball"
+  if check_for_gh_branch "silo" "Silo-Server/silo-server" "main"; then
+    fetch_and_deploy_gh_branch "silo" "Silo-Server/silo-server" "main"
 
     GO_VERSION="$(sed -n 's/^go //p' /opt/silo/go.mod)" setup_go
     NODE_VERSION="24" NODE_MODULE="pnpm@$(jq -r '.packageManager | split("@")[1]' /opt/silo/web/package.json)" setup_nodejs
